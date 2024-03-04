@@ -3,7 +3,7 @@ import $ from 'jquery';
 import countries from "i18n-iso-countries";
 import langs_nl from "i18n-iso-countries/langs/nl.json";
 countries.registerLocale(langs_nl);
-const langCountries = countries.getNames(langs_nl);
+const langCountries = countries.getNames('nl');
 
 const allCountries = Object.keys(langCountries).map((code) => {
 	return {
