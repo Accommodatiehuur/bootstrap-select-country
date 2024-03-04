@@ -15,13 +15,25 @@ const languageMappings = {
 	'de': langs_de, // German
 };
 
-let countrypicker = function(countries) {
+// Mapping country names with their codes
+const countriesList = (locale) => {
+	var langCountries = countries.getNames(languageMappings[locale]);
+	return Object.keys(langCountries).map((code) => {
+		return {
+			name: langCountries[code],
+			code: code
+		};
+	});
+};
+
+let countrypicker = function(opts) {
 	$(this).each(function(index, select) {
 		var $select = $(select);
 		var flag = $select.data('flag');
 		var locale = $select.data('locale') || 'nl'; // Default to Dutch if no locale is provided
 
-		var langCountries = countries.getNames(languageMappings[locale]);
+		var countries_list = countriesList(locale);
+		var langCountries = countries_list.getNames(languageMappings[locale]);
 
 		// Mapping country names with their codes
 		const allCountries = Object.keys(langCountries).map((code) => {
@@ -35,7 +47,7 @@ let countrypicker = function(countries) {
 		allCountries.sort((a, b) => a.name.localeCompare(b.name));
 
 		var countries = allCountries;
-		
+
 		// filter countries of an option "data-countries" exist"
 		var selectedCountries = $select.data('countries');
 		if (selectedCountries && selectedCountries.length) {
