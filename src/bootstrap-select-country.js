@@ -15,7 +15,7 @@ const allCountries = Object.keys(langCountries).map((code) => {
 let countrypicker = function(opts) {
 	$(this).each(function(index, select) {
 		var $select = $(select);
-		
+
 		var locale = $select.data('locale') || 'nl';
 		var langCountries = countries.getNames(locale);
 		var allCountries = Object.keys(langCountries).map((code) => {
