@@ -1,9 +1,9 @@
 import $ from 'jquery';
 
 import countries from "i18n-iso-countries";
-import langs_en from "i18n-iso-countries/langs/en.json";
-countries.registerLocale(langs_en);
-const langCountries = countries.getNames('en');
+import langs_nl from "i18n-iso-countries/langs/nl.json";
+countries.registerLocale(langs_nl);
+const langCountries = countries.getNames('nl');
 
 const allCountries = Object.keys(langCountries).map((code) => {
 	return {

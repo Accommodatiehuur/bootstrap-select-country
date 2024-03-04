@@ -1,4 +1,8 @@
 ## bootstrap-select-country
+## Build project
+npm install -g rollup
+rollup --config
+
 
 **based on the popular [bootstrap-select](https://silviomoreto.github.io/bootstrap-select/)**
 ![bootstrap-select-country examples](https://preview.ibb.co/dJ7sA6/Screen_Shot_2017_11_19_at_14_52_35.png)
