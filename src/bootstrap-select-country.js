@@ -3,7 +3,7 @@ import $ from 'jquery';
 import countries from "i18n-iso-countries";
 import langs_nl from "i18n-iso-countries/langs/nl.json";
 countries.registerLocale(langs_nl);
-const langCountries = countries.getNames('nl');
+const langCountries = countries.getNames(langs_nl);
 
 const allCountries = Object.keys(langCountries).map((code) => {
 	return {
@@ -15,6 +15,15 @@ const allCountries = Object.keys(langCountries).map((code) => {
 let countrypicker = function(opts) {
 	$(this).each(function(index, select) {
 		var $select = $(select);
+		
+		var locale = $select.data('locale') || 'nl';
+		var langCountries = countries.getNames(locale);
+		var allCountries = Object.keys(langCountries).map((code) => {
+			return {
+				name: langCountries[code],
+				code: code
+			};
+		});
 
 		var flag = $select.data('flag');
 
