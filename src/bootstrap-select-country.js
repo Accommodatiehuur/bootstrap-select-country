@@ -35,7 +35,7 @@ let countrypicker = function(opts) {
 		var flag = $select.data('flag');
 		var locale = $select.data('locale') || 'nl'; // Default to Dutch if no locale is provided
 
-		var countries = allCountries;
+		var countries = countriesList(locale);
 
 		// filter countries of an option "data-countries" exist"
 		var selectedCountries = $select.data('countries');
