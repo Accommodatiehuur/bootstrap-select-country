@@ -12,6 +12,9 @@ const allCountries = Object.keys(langCountries).map((code) => {
 	};
 });
 
+// Sorting the countries array by Dutch names
+allCountries.sort((a, b) => a.name.localeCompare(b.name, 'nl'));
+
 let countrypicker = function(opts) {
 	$(this).each(function(index, select) {
 		var $select = $(select);
@@ -29,8 +32,6 @@ let countrypicker = function(opts) {
 			selectedCountries = selectedCountries.toUpperCase().split(',');
 			countries = countries.filter(c => selectedCountries.includes(c.code));
 		}
-
-		console.log(countries);
 
 		var options = [];
 		if (flag) {

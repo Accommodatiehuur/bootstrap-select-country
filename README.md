@@ -2,7 +2,7 @@
 ## Build project
 ```
 npm install -g rollup
-rollup --config
+rollup --config --bundleConfigAsCjs
 ```
 
 **based on the popular [bootstrap-select](https://silviomoreto.github.io/bootstrap-select/)**
