@@ -17,13 +17,16 @@ const languageMappings = {
 
 // Mapping country names with their codes
 const countriesList = (locale) => {
-	var langCountries = countries.getNames(languageMappings[locale]);
-	return Object.keys(langCountries).map((code) => {
+	var langCountries = countries.getNames(locale);
+	var countries_sorted = Object.keys(langCountries).map((code) => {
 		return {
 			name: langCountries[code],
 			code: code
 		};
 	});
+	// Sorting the countries array by country names
+	countries_sorted.sort((a, b) => a.name.localeCompare(b.name));
+	return countries_sorted;
 };
 
 let countrypicker = function(opts) {
@@ -31,20 +34,6 @@ let countrypicker = function(opts) {
 		var $select = $(select);
 		var flag = $select.data('flag');
 		var locale = $select.data('locale') || 'nl'; // Default to Dutch if no locale is provided
-
-		var countries_list = countriesList(locale);
-		var langCountries = countries_list.getNames(languageMappings[locale]);
-
-		// Mapping country names with their codes
-		const allCountries = Object.keys(langCountries).map((code) => {
-			return {
-				name: langCountries[code],
-				code: code
-			};
-		});
-
-		// Sorting the countries array by country names
-		allCountries.sort((a, b) => a.name.localeCompare(b.name));
 
 		var countries = allCountries;
 
