@@ -2,24 +2,41 @@ import $ from 'jquery';
 
 import countries from "i18n-iso-countries";
 import langs_nl from "i18n-iso-countries/langs/nl.json";
-countries.registerLocale(langs_nl);
-const langCountries = countries.getNames('nl');
+import langs_en from "i18n-iso-countries/langs/en.json";
+import langs_de from "i18n-iso-countries/langs/de.json";
 
-const allCountries = Object.keys(langCountries).map((code) => {
-	return {
-		name: langCountries[code],
-		code: code
-	};
-});
+countries.registerLocale(langs_nl);
+countries.registerLocale(langs_en);
+countries.registerLocale(langs_de);
+
+const languageMappings = {
+	'nl': langs_nl, // Dutch
+	'en': langs_en, // English
+	'de': langs_de, // German
+};
+
+// Mapping country names with their codes
+const countriesList = (locale) => {
+	var langCountries = countries.getNames(locale);
+	var countries_sorted = Object.keys(langCountries).map((code) => {
+		return {
+			name: langCountries[code],
+			code: code
+		};
+	});
+	// Sorting the countries array by country names
+	countries_sorted.sort((a, b) => a.name.localeCompare(b.name));
+	return countries_sorted;
+};
 
 let countrypicker = function(opts) {
 	$(this).each(function(index, select) {
 		var $select = $(select);
-
 		var flag = $select.data('flag');
+		var locale = $select.data('locale') || 'nl'; // Default to Dutch if no locale is provided
 
-		var countries = allCountries;
-		
+		var countries = countriesList(locale);
+
 		// filter countries of an option "data-countries" exist"
 		var selectedCountries = $select.data('countries');
 		if (selectedCountries && selectedCountries.length) {
