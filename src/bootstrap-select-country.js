@@ -17,13 +17,7 @@ let countrypicker = function(opts) {
 		var $select = $(select);
 
 		var locale = $select.data('locale') || 'nl';
-		var langCountries = countries.getNames(locale);
-		var allCountries = Object.keys(langCountries).map((code) => {
-			return {
-				name: langCountries[code],
-				code: code
-			};
-		});
+
 
 		var flag = $select.data('flag');
 
@@ -35,6 +29,8 @@ let countrypicker = function(opts) {
 			selectedCountries = selectedCountries.toUpperCase().split(',');
 			countries = countries.filter(c => selectedCountries.includes(c.code));
 		}
+
+		console.log(countries);
 
 		var options = [];
 		if (flag) {
