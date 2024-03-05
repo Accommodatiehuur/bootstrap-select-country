@@ -4,16 +4,12 @@ import countries from "i18n-iso-countries";
 import langs_nl from "i18n-iso-countries/langs/nl.json";
 import langs_en from "i18n-iso-countries/langs/en.json";
 import langs_de from "i18n-iso-countries/langs/de.json";
+import langs_fr from "i18n-iso-countries/langs/fr.json";
 
 countries.registerLocale(langs_nl);
 countries.registerLocale(langs_en);
 countries.registerLocale(langs_de);
-
-const languageMappings = {
-	'nl': langs_nl, // Dutch
-	'en': langs_en, // English
-	'de': langs_de, // German
-};
+countries.registerLocale(langs_fr);
 
 // Mapping country names with their codes
 const countriesList = (locale) => {
