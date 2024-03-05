@@ -11,13 +11,6 @@ countries.registerLocale(langs_en);
 countries.registerLocale(langs_de);
 countries.registerLocale(langs_fr);
 
-const languageMappings = {
-	'nl': langs_nl, // Dutch
-	'en': langs_en, // English
-	'de': langs_de, // German
-	'fr': langs_fr, // French
-};
-
 // Mapping country names with their codes
 const countriesList = (locale) => {
 	var langCountries = countries.getNames(locale);
@@ -37,7 +30,6 @@ let countrypicker = function(opts) {
 		var $select = $(select);
 		var flag = $select.data('flag');
 		var locale = $select.data('locale') || 'nl'; // Default to Dutch if no locale is provided
-		console.log(locale);
 
 		var countries = countriesList(locale);
 
